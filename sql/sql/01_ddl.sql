@@ -1,47 +1,54 @@
 -- TABELAS OLTP
+USE faculdade_nova_horizonte;
 
-CREATE TABLE aluno (
-    id_aluno INT PRIMARY KEY,
-    nome_aluno VARCHAR(100),
-    data_nascimento DATE
+-- Módulo Acadêmico
+CREATE TABLE tb_alunos(
+    pk_rgm INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome_aluno VARCHAR(120) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cpf VARCHAR(11) UNIQUE,
+    email VARCHAR(120) UNIQUE,
+    sexo CHAR(1)
 );
 
-CREATE TABLE curso (
-    id_curso INT PRIMARY KEY,
-    nome_curso VARCHAR(100)
+CREATE TABLE tb_disciplinas(
+    pk_id_disciplina INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome_disciplina VARCHAR(120) NOT NULL,
+    carga_horaria INT NOT NULL,
+    status_disciplina VARCHAR(20) NOT NULL DEFAULT 'ativo'
 );
 
-CREATE TABLE matricula (
-    id_matricula INT PRIMARY KEY,
-    id_aluno INT,
-    id_curso INT,
-    nota_p1 DECIMAL(5,2),
-    nota_p2 DECIMAL(5,2),
-    aprovacao VARCHAR(20),
-
-    FOREIGN KEY (id_aluno) REFERENCES aluno(id_aluno),
-    FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+CREATE TABLE tb_matriculas(
+ pk_id_matricula INT AUTO_INCREMENT PRIMARY KEY,
+    fk_rgm INT NOT NULL,
+    fk_id_disciplina INT NOT NULL,
+    data_matricula DATE NOT NULL,
+    FOREIGN KEY (fk_rgm) REFERENCES tb_alunos(pk_rgm),
+    FOREIGN KEY (fk_id_disciplina) REFERENCES tb_disciplinas(pk_id_disciplina)
 );
 
--- OLAP
-
-CREATE TABLE dim_aluno (
-    sk_aluno INT PRIMARY KEY,
-    nome_aluno VARCHAR(100)
+-- Módulo Financeiro
+CREATE TABLE tb_contratos_educacionais(
+    pk_id_contrato INT AUTO_INCREMENT PRIMARY KEY,
+    fk_rgm INT NOT NULL,
+    valor_total DECIMAL(10,2) NOT NULL,
+    status_contrato VARCHAR(20) NOT NULL DEFAULT 'ativo',
+    FOREIGN KEY (fk_rgm) REFERENCES tb_alunos(pk_rgm)
 );
 
-CREATE TABLE dim_curso (
-    sk_curso INT PRIMARY KEY,
-    nome_curso VARCHAR(100)
+CREATE TABLE tb_parcelas_contrato(
+    pk_id_parcela INT AUTO_INCREMENT PRIMARY KEY,
+    fk_id_contrato INT NOT NULL,
+    valor_parcela DECIMAL(10,2) NOT NULL,
+    data_vencimento DATE NOT NULL,
+    data_pagamento DATE,
+    FOREIGN KEY (fk_id_contrato) REFERENCES tb_contratos_educacionais(pk_id_contrato)
 );
 
-CREATE TABLE fato_desempenho (
-    id_fato INT AUTO_INCREMENT PRIMARY KEY,
-    fk_aluno INT,
-    fk_curso INT,
-    nota_total DECIMAL(5,2),
-    aprovacao VARCHAR(20),
-
-    FOREIGN KEY (fk_aluno) REFERENCES dim_aluno(sk_aluno),
-    FOREIGN KEY (fk_curso) REFERENCES dim_curso(sk_curso)
+-- Módulo RH
+CREATE TABLE tb_funcionarios(
+    pk_id_funcionario INT AUTO_INCREMENT PRIMARY KEY,
+    nome_funcionario VARCHAR(120) NOT NULL,
+    cargo VARCHAR(50) NOT NULL,
+    data_admissao DATE NOT NULL
 );

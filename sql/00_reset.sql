@@ -1,4 +1,4 @@
--- RESET DO BANCO
+-- RESET E CRIAÇÃO DO BANCO
 DROP DATABASE IF EXISTS faculdade_nova_horizonte;
 DROP DATABASE IF EXISTS faculdade_NH_dw;
 

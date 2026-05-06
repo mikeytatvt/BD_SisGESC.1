@@ -3,19 +3,7 @@
 ## Execução
 
 1. 00_reset.sql
-2. 01_ddl.sql
-3. 02_dml.sql
-4. 03_etl.sql
-5. 04_validacao.sql
-
-## Estrutura
-
-- OLTP: aluno, curso, matricula
-- OLAP: dimensões e fato
-
-## Características
-
-- PK e FK
-- Star Schema
-- ETL
-- Idempotente
+2. 01_estrutura_oltp.sql
+3. 02__carga_idempotente_dml.sql
+4. 03_dw_e_etl.sql
+5. 04_validação_e_performance.sql

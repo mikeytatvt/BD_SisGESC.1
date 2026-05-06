@@ -1,7 +1,6 @@
 -- RESET DO BANCO
-DROP TABLE IF EXISTS fato_desempenho;
-DROP TABLE IF EXISTS dim_aluno;
-DROP TABLE IF EXISTS dim_curso;
-DROP TABLE IF EXISTS matricula;
-DROP TABLE IF EXISTS aluno;
-DROP TABLE IF EXISTS curso;
+DROP DATABASE IF EXISTS faculdade_nova_horizonte;
+DROP DATABASE IF EXISTS faculdade_NH_dw;
+
+CREATE DATABASE faculdade_nova_horizonte;
+CREATE DATABASE faculdade_NH_dw;

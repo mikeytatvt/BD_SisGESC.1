@@ -7,7 +7,7 @@ Nesse repositório do SisGESC (Sistema de Gestão Escolar). Este projeto funcion
 - `/sql/`: Contém os scripts divididos por fases do projeto.
 - `run_all.sql`: Script unificado para rodar todo o projeto com um único comando.
 - `dicionario_de_dados.md`: Descrição detalhada das tabelas e colunas.
-- `der_sisgesc.png`: (Coloque a imagem do seu diagrama aqui).
+- `der_sisgesc.png`: Imagem do Diagrama do Projeto
 
 # Como executar o nosso projeto
 

@@ -37,7 +37,6 @@ Este documento descreve a estrutura das tabelas do banco de dados transacional (
 - `pk_id_matricula` (INT): ID da matrícula. 
 - `fk_rgm` (INT): Chave estrangeira ligando o RGM.
 - `fk_id_disciplina` (INT): Chave estrangeira ligando o ID da disciplina.
-- `periodo_letivo` (VARCHAR): Período letivo que o aluno está cursando.
 - `data_matricula` (DATE): Data da matricula.
 
 ### Tabela: tb_contratos_educacionais

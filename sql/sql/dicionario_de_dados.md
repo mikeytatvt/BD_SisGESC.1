@@ -19,7 +19,7 @@ Este documento descreve a estrutura das tabelas do banco de dados transacional (
 *Propósito: Cadastro de alunos da instituição.*
 - `pk_rgm` (INT): Registro Geral de Matrícula (Chave Primária).
 - `nome_aluno` (VARCHAR): Nome completo.
-- `data_nascimento` (VARCHAR): Data de nascimento.
+- `data_nascimento` (DATE): Data de nascimento.
 - `cpf` (VARCHAR): CPF do aluno.
 - `email` (VARCHAR): Email do aluno.
 - `sexo` (CHAR): Sexo do aluno.  
@@ -42,46 +42,39 @@ Este documento descreve a estrutura das tabelas do banco de dados transacional (
 ### Tabela: tb_turmas
 *Propósito: Cadastro das turmas.*
 - `pk_id_turma` (INT): ID da turma (Chave Primária).
-- `fk_id_disciplina` (INT): Chave estrangeira ligando a disciplina.
+- `fk_id_curso` (INT): Chave estrangeira ligando o curso.
 - `nome_turma` (VARCHAR): Nome da turma.
-- `ano` (YEAR): Ano que a turma está cursando.
-- `semestre` (VARCHAR): Semestre da turma. 
-- `status_turma` (VARCHAR): Status da turma.
+- `ano` (INT): Ano que a turma está cursando.
+- `semestre` (INT): Semestre da turma. 
 
 ### Tabela: tb_grade_horaria
 *Propósito: Criação e gestão da grade horária do aluno.*
 - `pk_id_grade` (INT): ID da grade horária (Chave Primária).
 - `fk_id_turma` (INT): Chave estrangeira ligando o ID da turma do aluno.
-- `dia_semana` (DATE): Dia da semana.
-- `hora_inicio` (TIME): Horário de início da aula. 
-- `hora_fim` (TIME): Horário do término da aula.
+- `fk_id_disciplina` (INT): Chave estrangeira ligando o ID da disciplina.
+- `fk_id_professor` (INT): Chave estrangeira ligando o ID do professor.
+- `dia_semana` (VARCHAR): Dia da semana.
 
 ### Tabela: tb_notas
 *Propósito: Gestão das notas dos alunos.*
 - `pk_id_nota` (INT): ID da nota (Chave Primária).
-- `fk_id_matricula` (INT): Chave estrangeira ligando o ID da matrícula do aluno.
-- `nota_p1` (INT): Nota parcial 1 da nota final.
-- `nota_p2` (INT): Nota parcial 2 da nota final.
-- `nota_af` (INT): Nota da avaliação final caso o aluno fique de recuperação.
-- `data_registro` (DATE): Data de registro da nota.
-- `ultima_atualizacao` (DATETIME): Data e hora da última atualização feita na nota.
+- `fk_rgm` (INT): Chave estrangeira ligando o RGM do aluno.
+- `fk_id_disciplina` (INT): Chave estrangeira ligando o ID da disciplina.
+- `nota` (DECUMAL): Nota final do aluno.
   
 ### Tabela: tb_faltas
 *Propósito: Gestão de presença dos alunos.*
 - `pk_id_falta` (INT): ID da falta (Chave Primária).
-- `fk_id_matricula` (INT): Chave estrangeira ligando o ID da matrícula do aluno.
-- `quantidade` (INT): Quantidade de faltas do aluno.
-- `data_registro` (DATE): Data de registro da falta.
-- `ultima_atualizacao` (DATETIME): Data e hora da última atualização feita nas faltas.
-
+- `fk_rgm` (INT): Chave estrangeira ligando o RGM do aluno.
+- `fk_id_disciplina` (INT): Chave estrangeira ligando o ID da disciplina.
+- `quantidade_faltas` (INT): Quantidade de faltas do aluno.
 
 ### Tabela: tb_inadimplecia
 *Propósito: Gestão de inadimplência do aluno.*
 - `pk_id_inadimplencia` (INT): ID da inadimplência (Chave Primária). 
-- `fk_id_parcela` (INT): Chave estrangeira ligando o ID da parcela.
-- `data_registro` (DATE): Data da inadimpência.
-- `status_inadimplencia` (VARCHAR): Status de inadimplência do aluno.
-- `observacao` (VARCHAR): Comentários sobre a situação do aluno.
+- `fk_id_contrato` (INT): Chave estrangeira ligando o contrato.
+- `dias_atraso` (INT): Quantidade de dias que está atrasado.
+- `valor_multa` (DECIMAL): Valor da multa a ser paga.
  
 
 ### Tabela: tb_contratos_educacionais
@@ -109,9 +102,8 @@ Este documento descreve a estrutura das tabelas do banco de dados transacional (
 ### Tabela: tb_professores
 *Propósito: Cadastro de professores.*
 - `pk_id_professor` (INT): ID do professor (Chave Primária).
-- `fk_id_funcionario` (INT): Chave estrangeira ligando o Id do funcionário.
-- `titulacao` (VARCHAR): Mestrado ou doutorado do professor.
-- `area_atuacao` (VARCHAR): Área de atuação do professor.
+- `nome_professor` (VARCHAR): Nome do professor.
+- `especialidade` (VARCHAR): Área de especialidade do professor.
 
 
 ---

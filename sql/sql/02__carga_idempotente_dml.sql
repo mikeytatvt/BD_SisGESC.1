@@ -25,7 +25,7 @@ DELETE FROM tb_funcionarios;
 
 -- Acadêmico Base
 INSERT INTO tb_unidades (pk_id_unidade, nome_unidade) VALUES 
-(1, 'Campus Central'), (2, 'Campus Norte'); [cite: 10]
+(1, 'Campus Central'), (2, 'Campus Norte');
 
 INSERT INTO tb_cursos (pk_id_curso, nome_curso, fk_id_unidade) VALUES 
 (1, 'Análise e Desenvolvimento de Sistemas', 1),
@@ -41,11 +41,11 @@ INSERT INTO tb_turmas (pk_id_turma, nome_turma, ano, semestre, fk_id_curso) VALU
 
 INSERT INTO tb_alunos (pk_rgm, nome_aluno, data_nascimento, cpf, fk_id_curso) VALUES 
 (1, 'Lucas Silva', '2000-05-15', '12345678901', 1),
-(2, 'Ana Costa', '1998-10-20', '98765432100', 2); [cite: 10]
+(2, 'Ana Costa', '1998-10-20', '98765432100', 2);
 
 INSERT INTO tb_disciplinas (pk_id_disciplina, nome_disciplina, carga_horaria) VALUES 
 (1, 'Banco de Dados', 80),
-(2, 'Programação', 80); [cite: 10]
+(2, 'Programação', 80);
 
 -- Pedagógico
 INSERT INTO tb_grade_horaria (fk_id_turma, fk_id_disciplina, fk_id_professor, dia_semana) VALUES
@@ -54,7 +54,7 @@ INSERT INTO tb_grade_horaria (fk_id_turma, fk_id_disciplina, fk_id_professor, di
 
 INSERT INTO tb_matriculas (pk_id_matricula, fk_rgm, fk_id_disciplina, data_matricula) VALUES 
 (1, 1, 1, '2024-02-01'),
-(2, 2, 2, '2024-02-01'); [cite: 10]
+(2, 2, 2, '2024-02-01');
 
 INSERT INTO tb_notas (fk_rgm, fk_id_disciplina, nota) VALUES 
 (1, 1, 8.5), (2, 2, 9.0);
@@ -65,15 +65,15 @@ INSERT INTO tb_faltas (fk_rgm, fk_id_disciplina, quantidade_faltas) VALUES
 -- Financeiro
 INSERT INTO tb_contratos_educacionais (pk_id_contrato, fk_rgm, valor_total) VALUES 
 (1, 1, 1200.00),
-(2, 2, 1500.00); [cite: 10]
+(2, 2, 1500.00);
 
 INSERT INTO tb_parcelas_contrato (fk_id_contrato, valor_parcela, data_vencimento, data_pagamento) VALUES 
 (1, 600.00, '2024-03-10', '2024-03-05'),
-(2, 750.00, '2024-03-10', '2024-03-10'); [cite: 10]
+(2, 750.00, '2024-03-10', '2024-03-10');
 
 -- RH
 INSERT INTO tb_funcionarios (nome_funcionario, cargo, data_admissao) VALUES 
-('Carlos Mendes', 'Secretário Acadêmico', '2020-01-15'); [cite: 10]
+('Carlos Mendes', 'Secretário Acadêmico', '2020-01-15');
 
 -- ==========================================
 -- 3. EVIDÊNCIA DE IDEMPOTÊNCIA

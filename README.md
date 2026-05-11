@@ -13,24 +13,3 @@ Navegue até o diretório raiz do projeto.
 Execute o script principal:
 ```sql
    SOURCE run_all.sql;
-
-
-## Correções Aplicadas
-
-Correções Aplicadas
-Corrigido nome do arquivo no `run_all.sql`
-Removidos textos inválidos `[cite: ...]` dos scripts SQL
-Scripts revisados para execução automática no MySQL Workbench
-Como Executar
-Abra o MySQL Workbench
-Execute:
-```sql
-SOURCE sql/run_all.sql;
-```
-O sistema criará:
-Estrutura OLTP
-Carga DML
-Consultas OLTP
-Data Warehouse OLAP
-ETL
-Índices e validações

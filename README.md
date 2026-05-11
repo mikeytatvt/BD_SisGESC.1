@@ -25,7 +25,7 @@ Como Executar
 Abra o MySQL Workbench
 Execute:
 ```sql
-SOURCE sql/sqlrun_all.sql;
+SOURCE sql/sql/run_all.sql;
 ```
 O sistema criará:
 Estrutura OLTP
